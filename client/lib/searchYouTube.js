@@ -7,6 +7,7 @@ var searchYouTube = (options, callback) => {
   url: 'https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=10&order=relevance&q='+searchText+'&fields=etag%2CeventId%2Citems%2Ckind%2CnextPageToken%2CpageInfo%2CprevPageToken%2CtokenPagination%2CvisitorId&key='+window.YOUTUBE_API_KEY,
   type: 'GET',
   success: function (data) {
+    
     console.log('video received:',data);
   },
   error: function (data) {

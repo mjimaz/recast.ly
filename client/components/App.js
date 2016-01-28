@@ -19,7 +19,7 @@ class App extends React.Component {
 
   render() {
     return (<div>
-      <Nav />
+      <Nav videoList = {this.state}/>
       <div className="col-md-7">
         <VideoPlayer video = {this.state.currentlyPlaying} />
       </div>
