@@ -3,21 +3,23 @@ var searchYouTube = (options, callback) => {
 
   var searchText = $('.form-control').val();
 
-  $.ajax({
+  $.get('https://www.googleapis.com/youtube/v3/search', {
   // This is the url you should use to communicate with the parse API server.
-  url: 'https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=10&order=relevance&q='+searchText+'&fields=etag%2CeventId%2Citems%2Ckind%2CnextPageToken%2CpageInfo%2CprevPageToken%2CtokenPagination%2CvisitorId&key='+window.YOUTUBE_API_KEY,
-  type: 'GET',
-  success: function (data) {
+  
+    part: 'snippet',
+    key: window.YOUTUBE_API_KEY,
+    maxResults: 10,
+    q: searchText,
+    type: 'video',
+    videoEmbeddable: 'true'
+  }).done((data) => {
     if(callback){
       callback(data);
     }
-
-  },
-  error: function (data) {
+  }).fail((data) => {
     console.error('Recast.ly: Failed to receive videos!',data);
-  }
-
-});
+    }
+  );
 
 };
 
