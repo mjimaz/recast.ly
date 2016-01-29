@@ -1,13 +1,14 @@
-var VideoPlayer = ({video}) => {
+var VideoPlayer = (props) => {
 
-if(video) {
+if(props.video) {
   return (<div className="video-player">
     <div className="embed-responsive embed-responsive-16by9">
-      <iframe className="embed-responsive-item" src={`https://www.youtube.com/embed/${video.id.videoId}?autoplay=1 allowFullScreen`}></iframe>
+      <iframe className="embed-responsive-item" type="text/html" src={`https://www.youtube.com/embed/${props.video.id.videoId}?autoplay=${props.autop ? 1 : 0}&allowFullScreen`}></iframe>
+    }
     </div>
     <div className="video-player-details">
-      <h3>{video.snippet.title}</h3>
-      <div>{video.snippet.description}</div>
+      <h3>{props.video.snippet.title}</h3>
+      <div>{props.video.snippet.description}</div>
     </div>
   </div>)
 } else {

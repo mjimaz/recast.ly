@@ -3,7 +3,8 @@ class App extends React.Component {
     super(props);
     this.state = {
       currentlyPlaying: null,
-      videoList: []
+      videoList: [],
+      autoplay: false
     };
   }
 
@@ -22,12 +23,17 @@ class App extends React.Component {
     this.setState({videoList : data.items});
   }
 
+  autoplay(){
+    this.setState({autoplay: !this.state.autoplay});
+  }
+
   render() {
     return (<div>
       <Nav videoList = {this.state}
       setStates = {this.setStates.bind(this)}/>
+      <div>Autoplay: <input type="checkbox" name="autoplay" value="false" onChange = {this.autoplay.bind(this)}/></div>
       <div className="col-md-7">
-        <VideoPlayer video = {this.state.currentlyPlaying} />
+        <VideoPlayer video = {this.state.currentlyPlaying} autop={this.state.autoplay} />
         <VideoDetails video = {this.state.currentlyPlaying} />
       </div>
       <div className="col-md-5" onClick = {this.handleClick.bind(this)}>
