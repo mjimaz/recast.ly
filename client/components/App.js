@@ -2,8 +2,8 @@ class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      currentlyPlaying: window.exampleVideoData[0],
-      videoList: window.exampleVideoData
+      currentlyPlaying: null,
+      videoList: []
     };
   }
 
@@ -17,9 +17,16 @@ class App extends React.Component {
 
   }
 
+  setStates(data) {
+    console.log('set states data', data);
+    this.setState({currentlyPlaying : data.items[0]});
+    this.setState({videoList : data.items});
+  }
+
   render() {
     return (<div>
-      <Nav videoList = {this.state}/>
+      <Nav videoList = {this.state}
+      setStates = {this.setStates.bind(this)}/>
       <div className="col-md-7">
         <VideoPlayer video = {this.state.currentlyPlaying} />
       </div>
