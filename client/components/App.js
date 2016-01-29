@@ -28,6 +28,7 @@ class App extends React.Component {
       setStates = {this.setStates.bind(this)}/>
       <div className="col-md-7">
         <VideoPlayer video = {this.state.currentlyPlaying} />
+        <VideoDetails video = {this.state.currentlyPlaying} />
       </div>
       <div className="col-md-5" onClick = {this.handleClick.bind(this)}>
         <VideoList videos = {this.state.videoList} />
