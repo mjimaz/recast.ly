@@ -18,7 +18,6 @@ class App extends React.Component {
   }
 
   setStates(data) {
-    console.log('set states data', data);
     this.setState({currentlyPlaying : data.items[0]});
     this.setState({videoList : data.items});
   }
